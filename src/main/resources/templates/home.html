@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/form.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <br/>
+
+    <form data-toggle="validator" role="form" th:action="@{/procurements/1}">
+        <br/>
+
+        <div align="center">
+
+            <label class="radio-inline">
+                <input type="radio" name="database" value="mysqlradio"> MySQL
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="database" value="redshiftradio"> RedShift
+            </label>
+            <br/>
+
+
+            <textarea aria-label="Query" rows="20" cols="150">
+            </textarea>
+            <div align="left">
+                <input class="class-button" type="submit" value="Run">
+            </div>
+            <textarea aria-label="Results" rows="20" cols="150">
+        </textarea>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
