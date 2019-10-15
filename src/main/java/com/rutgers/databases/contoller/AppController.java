@@ -65,8 +65,6 @@ public class AppController {
             this.queryObject = queryObject;
             List<ArrayList<String>> list = getQueryResult(pageNumber, direction, queryObject);
             queryObject.setList(list);
-            Gson gson = new Gson();
-            queryObject.setResults(gson.toJson(list));
             model.addAttribute("queryObject", queryObject);
         } catch (Exception ex) {
             queryObject.setError(true);
