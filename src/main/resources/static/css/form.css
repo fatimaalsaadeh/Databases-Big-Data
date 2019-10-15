@@ -6,12 +6,55 @@
     display: inline;
     margin-left: 5px;
 }
+.radio-inline {
 
+    padding-right: 20px;
+    padding-left: 0px !important;
+}
 .class-button {
     margin-left: 35px;
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 1px 35px;
-    background-color: aquamarine;
+    background-color: #337ab7;
+    color: darkgrey;
 
+}
+.class-label{
+    padding-left: 73%;
+    font-weight: normal !important;
+    color: #337ab7;
+}
+
+.dtHorizontalVerticalExampleWrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+#dtHorizontalVerticalExample th, td {
+    white-space: nowrap;
+}
+
+#table-wrapper {
+    position:relative;
+    width:95%;
+}
+#table-scroll {
+    height:350px;
+    overflow:auto;
+    margin-top:20px;
+}
+#table-wrapper table {
+    width:100%;
+
+}
+#table-wrapper table * {
+    color:black;
+}
+#table-wrapper table thead th .text {
+    position:absolute;
+    top:-20px;
+    z-index:2;
+    height:20px;
+    width:35%;
+    border:1px solid red;
 }
