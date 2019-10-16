@@ -11,7 +11,6 @@ public class QueryObject {
     private ArrayList<String> databaseType;
     private List<ArrayList<String>> list;
     private ArrayList<String> columns;
-    private Integer totalPages;
     private Integer currentPage;
     private long timeElapsed;
 
@@ -28,14 +27,6 @@ public class QueryObject {
 
     public void setQuery(String query) {
         this.query = query;
-    }
-
-    public String getResults() {
-        return results;
-    }
-
-    public void setResults(String results) {
-        this.results = results;
     }
 
     public List<ArrayList<String>> getList() {
@@ -70,13 +61,6 @@ public class QueryObject {
         this.databaseType = databaseType;
     }
 
-    public Integer getTotalPages() {
-        return totalPages;
-    }
-
-    public void setTotalPages(Integer totalPages) {
-        this.totalPages = totalPages;
-    }
 
     public Integer getCurrentPage() {
         return currentPage;

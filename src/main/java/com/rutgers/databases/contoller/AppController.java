@@ -1,6 +1,5 @@
 package com.rutgers.databases.contoller;
 
-import com.google.gson.Gson;
 import com.rutgers.databases.entity.QueryObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -81,8 +80,6 @@ public class AppController {
         try {
             List<ArrayList<String>> list = getQueryResult(pageNumber, direction, queryObject);
             queryObject.setList(list);
-            Gson gson = new Gson();
-            queryObject.setResults(gson.toJson(list));
             model.addAttribute("queryObject", queryObject);
         } catch (Exception ex) {
             queryObject.setError(true);
