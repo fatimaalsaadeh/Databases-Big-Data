@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Database Systems Project 1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/form.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <br/>
+
+    <form data-toggle="validator" role="form" th:object="${queryObject}" method="get" th:action="@{/results/1/next}">
+        <br/>
+
+        <div align="center">
+            <div class="form-group">
+                <label for="isMySQL">Select Database</label>
+                <select th:field="*{isMySQL}" id="isMySQL">
+                    <option value="yes">MySQL</option>
+                    <option value="no">RedShift</option>
+                </select>
+            </div>
+
+            <textarea aria-label="Query" id="query" th:field="*{query}" rows="15" cols="150">
+            </textarea>
+
+            <div>
+                <div align="left">
+                    <input class="class-button" type="submit" value="Run">
+                    <label class="class-label" th:text="'Time Elapsed : ' + ${queryObject.timeElapsed} + 'ms'"></label>
+                </div>
+
+            </div>
+
+            <div id="table-wrapper">
+                <div id="table-scroll">
+                    <table class="table table-bordered table-striped" id="dataTable" width="50%" cellspacing="0">
+                        <div th:if="${queryObject.error}">
+                            <td>Invalid Query</td>
+                        </div>
+
+                        <thead>
+                            <tr>
+                                <div th:unless="${queryObject.error}">
+                                    <span th:each="queryObjectColumns : ${queryObject.columns}">
+                                          <span th:each="qr: ${queryObjectColumns}">
+                                                <th class="th-sm" th:text="${qr}"></th>
+                                          </span>
+                                    </span>
+                                </div>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <div th:unless="${queryObject.error}">
+                                <span th:each="queryObjectResult : ${queryObject.list}">
+                                    <tr>
+                                      <span th:each="qr: ${queryObjectResult}">
+                                            <td th:text="${qr}"></td>
+                                      </span>
+                                    </tr>
+                                </span>
+                            </div>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div th:if="${queryObject.list != null}">
+                <ul class="pager">
+                    <li th:classappend="${queryObject.currentPage == 1} ? 'disabled'">
+                        <a class="page-link"
+                           th:href="@{/direction/{page}/{direction}(page=${queryObject.currentPage - 1}, direction='back')}">Back</a>
+                    </li>
+                    <li th:classappend="${#lists.size(queryObject.list) < 50} ? 'disabled'">
+                        <a class="page-link" if
+                           th:href="@{/direction/{page}/{direction}(page=${queryObject.currentPage + 1}, direction='next')}">Next</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
